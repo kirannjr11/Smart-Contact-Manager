@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
     <style>
         .container {
@@ -18,11 +19,12 @@
     </style>
 </head>
 <body>
-<div class="container text-2xl">
+<div class="container">
     <h1 data-th-text="${name}"></h1>
     <P> GitHub Repo : <span th:text="${github}"></span></p>
     <a th:href="${github}">Click Here</a>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis culpa cumque ex explicabo inventore ipsam non quae qui quidem veniam.</p>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 </html>
