@@ -12,6 +12,7 @@ public class PageController {
     public String home(Model model) {
        System.out.println("home page handler");
        model.addAttribute("name","My name is kiran Ghale");
+       model.addAttribute("github", "https://github.com/kirannjr11");
         return "home";
     }
 
