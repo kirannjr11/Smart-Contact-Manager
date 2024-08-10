@@ -19,6 +19,7 @@ public class PageController {
     //about
     @RequestMapping("/about")
     public String aboutPage() {
+        System.out.println("this is about");
        return "about";
     }
 
@@ -27,5 +28,12 @@ public class PageController {
     public String servicesPage() {
         System.out.println("services page loading");
         return "services";
+    }
+
+    //contact
+    @GetMapping("/contact")
+    public String contact() {
+        System.out.println("this is contact");
+       return "contact";
     }
 }
