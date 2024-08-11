@@ -1,10 +1,10 @@
 package com.kiran.demo.controlle;
 
+import com.kiran.demo.forms.UserForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 @Controller
 public class PageController {
     @GetMapping("/")
@@ -49,9 +49,17 @@ public class PageController {
 
     //register
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        UserForm userForm = new UserForm();
+        model.addAttribute("userForm", userForm);
         return "register";
     }
+
+    @RequestMapping(value="/do-register", method = RequestMethod.POST)
+    public String processRegister(@ModelAttribute UserForm userForm) {
+        return "redirect:/register";
+    }
+
 
 
 }
