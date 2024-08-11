@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 @Controller
-
 public class PageController {
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
+    }
    @RequestMapping("/home")
     public String home(Model model) {
        System.out.println("home page handler");
@@ -18,9 +21,10 @@ public class PageController {
 
     //about
     @RequestMapping("/about")
-    public String aboutPage() {
-        System.out.println("this is about");
-       return "about";
+    public String aboutPage(Model model) {
+        model.addAttribute("isLogin", true);
+        System.out.println("About page loading");
+        return "about";
     }
 
     //services
@@ -33,7 +37,21 @@ public class PageController {
     //contact
     @GetMapping("/contact")
     public String contact() {
-        System.out.println("this is contact");
-       return "contact";
+        return new String("contact");
     }
+
+    //login
+    @GetMapping("/login")
+    public String login() {
+        System.out.println("this is form login");
+        return "login";
+    }
+
+    //register
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+
 }
