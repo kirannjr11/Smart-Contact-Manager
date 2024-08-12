@@ -1,12 +1,18 @@
 package com.kiran.demo.controlle;
 
+import com.kiran.demo.entities.User;
 import com.kiran.demo.forms.UserForm;
+import com.kiran.demo.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PageController {
+
+    @Autowired
+    UserService userService;
     @GetMapping("/")
     public String index() {
         return "redirect:/home";
@@ -57,6 +63,16 @@ public class PageController {
 
     @RequestMapping(value="/do-register", method = RequestMethod.POST)
     public String processRegister(@ModelAttribute UserForm userForm) {
+        User user = User.builder()
+                .name(userForm.getName())
+                .email(userForm.getEmail())
+                .password(userForm.getPassword())
+                .about(userForm.getAbout())
+                .phoneNumber(userForm.getPhoneNumber())
+                .profilePic("https://www.facebook.com/photo/?fbid=151519027349616&set=a.111459681355551")
+                .build();
+      User savedUser = userService.saveUser(user);
+        System.out.println("savedUser :" +savedUser);
         return "redirect:/register";
     }
 
